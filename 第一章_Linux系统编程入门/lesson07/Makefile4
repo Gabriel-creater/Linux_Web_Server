@@ -1,0 +1,22 @@
+#定义变量
+src = add.o div.o main.o mult.o sub.o
+target = app
+$(target) : $(src)
+	$(CC) $(src) -o $(target)
+#app: add.o div.o main.o mult.o sub.o 
+#	gcc add.o div.o main.o mult.o sub.o -o app
+
+#通配符的使用，代替下面所示所有代码，$<表示第一个依赖文件的名称，$@表示目标的完整名称
+%.o: %.c
+	$(CC) -c $< -o $@
+
+#add.o: add.c
+#	gcc -c add.c -o add.o
+#div.o: div.c
+#	gcc -c div.c -o div.o
+#main.o: main.c
+#	gcc -c main.c -o main.o
+#mult.o: mult.c
+#	gcc -c mult.c -o mult.o
+#sub.o: sub.c
+#	gcc -c sub.c -o sub.o
